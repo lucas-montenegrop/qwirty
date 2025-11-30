@@ -59,13 +59,11 @@ nav {
   flex: 1;
 }
 
-/* 3/5 width — THIS IS THE SEARCH BAR */
 .bottom.container form {
   flex: 3;
   display: flex;
 }
 
-/* Style the input so it stretches inside the form */
 .bottom.container form input {
   flex: 1;
   padding: 0.5rem;
@@ -82,21 +80,30 @@ nav {
 }
 
 .page.container {
-   display: flex;
-  justify-content: space-between;  
-  align-items: start;
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;          
   padding: 1rem 2rem;
   width: 100%;
 }
+
+
 .categories {
-    display: flex;
-    flex-direction: column;
-     background-color: #5a39ee; 
+  flex: 1;            
+  display: flex;
+  flex-direction: column;
+  background-color: #5a39ee;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.page.container main {
+  flex: 4;           
 }
 
 .products {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
   list-style: none;
   padding: 0;
@@ -116,3 +123,67 @@ footer.page {
   padding: 2rem;
   background-color: #f50404f6; /* optional */
 }
+
+@media (max-width: 0px) {
+
+  /* 1) NAV: hide big menus, show hamburger */
+  .topleft-menu,
+  .screen-lg {
+    display: none;
+  }
+
+  .screen-sm {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  nav .container {
+    justify-content: flex-end;  /* push the hamburger to the right */
+  }
+  /* 2) HEADER BOTTOM: stack Qwirty / search / ad vertically */
+  .bottom.container {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+    padding: 1rem;
+  }
+
+  .bottom.container h1,
+  .bottom.container form,
+  .bottom.container .ad {
+    flex: initial;
+    width: 100%;
+  }
+
+  .bottom.container form {
+    order: 2;  /* optional: change order if you want */
+  }
+
+    /* 3) MAIN AREA: stack sidebar and products */
+  .page.container {
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1.5rem;
+  }
+
+  .categories {
+    width: 100%;
+  }
+
+  .page.container main {
+    width: 100%;
+    flex: initial;
+  }
+  /* 4) PRODUCTS GRID: fewer columns on mobile */
+  .products {
+    grid-template-columns: repeat(2, 1fr);  /* 2 per row on mobile */
+    margin: 1rem 0;
+    gap: 1rem;
+  }
+}
+
+
+.grid-template-columns: 1fr;
+
